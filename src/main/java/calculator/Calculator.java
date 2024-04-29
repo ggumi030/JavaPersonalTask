@@ -3,7 +3,11 @@ package calculator;
 import java.util.ArrayList;
 
 public class Calculator {
-    private ArrayList<Double> arrList = new ArrayList<>();
+    private ArrayList<Double> arrList;
+
+    public Calculator(){
+        arrList = new ArrayList<>();
+    }
 
     public double calculate(int firstNum, int secondNum, char opterator) throws ArithmeticException{
         double result = 0.0;
