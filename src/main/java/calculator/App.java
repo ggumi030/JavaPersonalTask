@@ -1,15 +1,13 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ArithmeticException{
         Scanner sc = new Scanner(System.in);
-//        int resArr[] = new int[10]; //계산 결과를 저장할 배열
-//        int arrIndex = 0; //배열의 마지막 인덱스를 저장할 변수
-        ArrayList<Double> resList = new ArrayList<>(); //계산 결과를 저장할 리스트
+
+        Calculator calc = new Calculator();
 
         while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -21,36 +19,30 @@ public class App {
 
             double result = 0;
 
-            switch (operator){
-                case '+': result = firstNum + secondNum; break;
-                case '-': result = firstNum - secondNum; break;
-                case '*': result = firstNum * secondNum; break;
-                case '/':
-                    if(secondNum == 0){
-                        System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                    }else{
-                        result = (double)firstNum / secondNum;
-                    }
-                    break;
-            }
+                switch (operator){
+                    case '+':
+                        result = calc.calculate(firstNum,secondNum,'+');
+                        calc.arrList.add(result);
+                        break;
+                    case '-':
+                        result = calc.calculate(firstNum,secondNum,'-');
+                        calc.arrList.add(result);
+                        break;
+                    case '*':
+                        result = calc.calculate(firstNum,secondNum,'*');
+                        calc.arrList.add(result);
+                        break;
+                    case '/':
+                        result = calc.calculate(firstNum,secondNum,'/');
+                        calc.arrList.add(result);
+                        break;
+                    default:
+                        result = calc.calculate(firstNum,secondNum,operator);
+                }
+
 
             System.out.println("결과: " + result);
 
-            //level 1-6
-//            if(arrIndex == 10){
-//                for(int i = 0; i < resArr.length-1; i++){
-//                    resArr[i] = resArr[i+1];
-//                }
-//                resArr[arrIndex-1] = result;
-//                System.out.println(resArr[arrIndex-1]);
-//            }else {
-//                resArr[arrIndex] = result; //배열에 결과 값 저장
-//                arrIndex++;  //인덱스 하나 증가
-//            }
-
-            //level 1-7
-            //값 추가
-            resList.add(result);
 
             //값 제거
             sc.nextLine(); //입력된 \n값 제거
@@ -58,7 +50,7 @@ public class App {
             String remove = sc.nextLine();
 
             if(remove.equals("remove")){
-                resList.remove(0);
+                calc.arrList.removeFirst();
             }
 
             //값 조회
@@ -66,7 +58,7 @@ public class App {
             String inquiry = sc.nextLine();
             if(inquiry.equals("inquiry")){
                 System.out.print("[ ");
-                for(Double num : resList){
+                for(Double num : calc.arrList){
                     System.out.print(num + " ");
                 }
                 System.out.println("]");
