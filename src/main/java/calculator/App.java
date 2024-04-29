@@ -61,6 +61,17 @@ public class App {
                 resList.remove(0);
             }
 
+            //값 조회
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiry = sc.nextLine();
+            if(inquiry.equals("inquiry")){
+                System.out.print("[ ");
+                for(Integer num : resList){
+                    System.out.print(num + " ");
+                }
+                System.out.println("]");
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String re = sc.nextLine();
             if(re.equals("exit")){
