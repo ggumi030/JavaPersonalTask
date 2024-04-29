@@ -37,6 +37,10 @@ public class Calculator {
         return arrList;
     }
 
+    public void removeResult(){
+        arrList.removeFirst();
+    }
+
 
 
 }
