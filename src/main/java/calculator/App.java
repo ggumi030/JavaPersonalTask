@@ -22,19 +22,19 @@ public class App {
                 switch (operator){
                     case '+':
                         result = calc.calculate(firstNum,secondNum,'+');
-                        calc.arrList.add(result);
+                        calc.Setter(result);
                         break;
                     case '-':
                         result = calc.calculate(firstNum,secondNum,'-');
-                        calc.arrList.add(result);
+                        calc.Setter(result);
                         break;
                     case '*':
                         result = calc.calculate(firstNum,secondNum,'*');
-                        calc.arrList.add(result);
+                        calc.Setter(result);
                         break;
                     case '/':
                         result = calc.calculate(firstNum,secondNum,'/');
-                        calc.arrList.add(result);
+                        calc.Setter(result);
                         break;
                     default:
                         result = calc.calculate(firstNum,secondNum,operator);
@@ -46,19 +46,19 @@ public class App {
 
             //값 제거
             sc.nextLine(); //입력된 \n값 제거
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            String remove = sc.nextLine();
+            //System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            //String remove = sc.nextLine();
 
-            if(remove.equals("remove")){
-                calc.arrList.removeFirst();
-            }
+            //if(remove.equals("remove")){
+            //    calc.arrList.removeFirst();
+            //}
 
             //값 조회
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiry = sc.nextLine();
             if(inquiry.equals("inquiry")){
                 System.out.print("[ ");
-                for(Double num : calc.arrList){
+                for(Double num : calc.getArrList()){
                     System.out.print(num + " ");
                 }
                 System.out.println("]");

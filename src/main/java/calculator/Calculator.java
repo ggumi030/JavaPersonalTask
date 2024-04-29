@@ -3,7 +3,7 @@ package calculator;
 import java.util.ArrayList;
 
 public class Calculator {
-    public ArrayList<Double> arrList = new ArrayList<>();
+    private ArrayList<Double> arrList = new ArrayList<>();
 
     public double calculate(int firstNum, int secondNum, char opterator) throws ArithmeticException{
         double result = 0.0;
@@ -27,6 +27,14 @@ public class Calculator {
         }
 
         return result;
+    }
+
+    public void Setter(double result){
+        arrList.add(result);
+    }
+
+    public ArrayList<Double> getArrList(){
+        return arrList;
     }
 
 
