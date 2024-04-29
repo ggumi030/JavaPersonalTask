@@ -33,8 +33,17 @@ public class App {
             }
 
             System.out.println("결과: " + result);
-            resArr[arrIndex] = result; //배열에 결과 값 저장
-            arrIndex++;  //인덱스 하나 증가
+
+            if(arrIndex == 10){
+                for(int i = 0; i < resArr.length-1; i++){
+                    resArr[i] = resArr[i+1];
+                }
+                resArr[arrIndex-1] = result;
+                System.out.println(resArr[arrIndex-1]);
+            }else {
+                resArr[arrIndex] = result; //배열에 결과 값 저장
+                arrIndex++;  //인덱스 하나 증가
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             sc.nextLine(); //입력된 \n값 제거
