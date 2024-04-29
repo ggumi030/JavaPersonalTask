@@ -6,7 +6,8 @@ public class App {
 
     public static void main(String[] args) throws ArithmeticException{
         Scanner sc = new Scanner(System.in);
-        Calculator calc = new Calculator();
+        Calculator arithCalc = new ArithmeticCalculator();
+        Calculator circleCalc = new ArithmeticCalculator();
 
         while(true){
             //연산 선택
@@ -26,23 +27,23 @@ public class App {
 
                 switch (operator){
                     case '+':
-                        arithmeticResult = calc.calculate(firstNum,secondNum,'+');
-                        calc.arithmeticSetter(arithmeticResult);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'+');
+                        arithCalc.Setter(arithmeticResult);
                         break;
                     case '-':
-                        arithmeticResult = calc.calculate(firstNum,secondNum,'-');
-                        calc.arithmeticSetter(arithmeticResult);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'-');
+                        arithCalc.Setter(arithmeticResult);
                         break;
                     case '*':
-                        arithmeticResult = calc.calculate(firstNum,secondNum,'*');
-                        calc.arithmeticSetter(arithmeticResult);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'*');
+                        arithCalc.Setter(arithmeticResult);
                         break;
                     case '/':
-                        arithmeticResult = calc.calculate(firstNum,secondNum,'/');
-                        calc.arithmeticSetter(arithmeticResult);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'/');
+                        arithCalc.Setter(arithmeticResult);
                         break;
                     default:
-                        arithmeticResult = calc.calculate(firstNum,secondNum,operator);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,operator);
                 }
 
                 System.out.println("결과: " + arithmeticResult);
@@ -53,14 +54,14 @@ public class App {
                 String remove = sc.nextLine();
 
                 if(remove.equals("remove")){
-                    calc.arithmeticRemoveResult();
+                    arithCalc.removeResult();
                 }
 
                 //값 조회
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inquiry = sc.nextLine();
                 if(inquiry.equals("inquiry")){
-                    calc.arithmeticInquiryResults();
+                    arithCalc.inquiryResults();
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -76,10 +77,12 @@ public class App {
                 double circleRadius = sc.nextDouble();
                 double circleResult;
 
-                circleResult =calc.calculateCircleArea(circleRadius);
+                circleResult =circleCalc.calculateCircleArea(circleRadius);
+
+                System.out.println("결과: " + circleResult);
 
                 //넓이 저장
-                calc.circleSetter(circleResult);
+                circleCalc.Setter(circleResult);
 
                 //값 제거
                 sc.nextLine(); //입력된 \n값 제거
@@ -87,14 +90,14 @@ public class App {
                 String remove = sc.nextLine();
 
                 if(remove.equals("remove")){
-                    calc.circleRemoveResult();
+                    circleCalc.removeResult();
                 }
 
                 //값 조회
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inquiry = sc.nextLine();
                 if(inquiry.equals("inquiry")){
-                    calc.circleInquiryResults();
+                    circleCalc.inquiryResults();
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
