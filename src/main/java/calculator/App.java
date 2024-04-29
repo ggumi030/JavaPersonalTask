@@ -1,13 +1,15 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int resArr[] = new int[10]; //계산 결과를 저장할 배열
-        int arrIndex = 0; //배열의 마지막 인덱스를 저장할 변수
+//        int resArr[] = new int[10]; //계산 결과를 저장할 배열
+//        int arrIndex = 0; //배열의 마지막 인덱스를 저장할 변수
+        ArrayList<Integer> resList = new ArrayList<>(); //계산 결과를 저장할 리스트
 
         while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -34,19 +36,32 @@ public class App {
 
             System.out.println("결과: " + result);
 
-            if(arrIndex == 10){
-                for(int i = 0; i < resArr.length-1; i++){
-                    resArr[i] = resArr[i+1];
-                }
-                resArr[arrIndex-1] = result;
-                System.out.println(resArr[arrIndex-1]);
-            }else {
-                resArr[arrIndex] = result; //배열에 결과 값 저장
-                arrIndex++;  //인덱스 하나 증가
+            //level 1-6
+//            if(arrIndex == 10){
+//                for(int i = 0; i < resArr.length-1; i++){
+//                    resArr[i] = resArr[i+1];
+//                }
+//                resArr[arrIndex-1] = result;
+//                System.out.println(resArr[arrIndex-1]);
+//            }else {
+//                resArr[arrIndex] = result; //배열에 결과 값 저장
+//                arrIndex++;  //인덱스 하나 증가
+//            }
+
+            //level 1-7
+            //값 추가
+            resList.add(result);
+
+            //값 제거
+            sc.nextLine(); //입력된 \n값 제거
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String remove = sc.nextLine();
+
+            if(remove.equals("remove")){
+                resList.remove(0);
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            sc.nextLine(); //입력된 \n값 제거
             String re = sc.nextLine();
             if(re.equals("exit")){
                 break;
