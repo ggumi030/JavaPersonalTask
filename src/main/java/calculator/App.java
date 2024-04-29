@@ -6,6 +6,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int resArr[] = new int[10]; //계산 결과를 저장할 배열
+        int arrIndex = 0; //배열의 마지막 인덱스를 저장할 변수
 
         while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -31,6 +33,9 @@ public class App {
             }
 
             System.out.println("결과: " + result);
+            resArr[arrIndex] = result; //배열에 결과 값 저장
+            arrIndex++;  //인덱스 하나 증가
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             sc.nextLine(); //입력된 \n값 제거
             String re = sc.nextLine();
