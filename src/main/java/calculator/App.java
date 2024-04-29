@@ -9,7 +9,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
 //        int resArr[] = new int[10]; //계산 결과를 저장할 배열
 //        int arrIndex = 0; //배열의 마지막 인덱스를 저장할 변수
-        ArrayList<Integer> resList = new ArrayList<>(); //계산 결과를 저장할 리스트
+        ArrayList<Double> resList = new ArrayList<>(); //계산 결과를 저장할 리스트
 
         while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -19,7 +19,7 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요: ");
             char operator = sc.next().charAt(0);
 
-            int result = 0;
+            double result = 0;
 
             switch (operator){
                 case '+': result = firstNum + secondNum; break;
@@ -29,7 +29,7 @@ public class App {
                     if(secondNum == 0){
                         System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                     }else{
-                        result = firstNum / secondNum;
+                        result = (double)firstNum / secondNum;
                     }
                     break;
             }
@@ -66,7 +66,7 @@ public class App {
             String inquiry = sc.nextLine();
             if(inquiry.equals("inquiry")){
                 System.out.print("[ ");
-                for(Integer num : resList){
+                for(Double num : resList){
                     System.out.print(num + " ");
                 }
                 System.out.println("]");
