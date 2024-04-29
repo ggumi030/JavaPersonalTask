@@ -41,6 +41,14 @@ public class Calculator {
         arrList.removeFirst();
     }
 
+    public void inquiryResults(){
+        System.out.print("[ ");
+        for(Double num : arrList){
+            System.out.print(num + " ");
+        }
+        System.out.println("]");
+    }
+
 
 
 }
