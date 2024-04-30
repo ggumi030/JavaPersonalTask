@@ -14,6 +14,7 @@ public class CircleCalculator extends Calculator{
         return result;
     }
 
+    @Override
     public ArrayList<Double> Getter(){
         return super.circleList;
     }

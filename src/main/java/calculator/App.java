@@ -7,15 +7,17 @@ public class App {
     public static void main(String[] args) throws ArithmeticException{
         Scanner sc = new Scanner(System.in);
         Calculator arithCalc = new ArithmeticCalculator();
-        Calculator circleCalc = new ArithmeticCalculator();
+        Calculator circleCalc = new CircleCalculator();
 
         while(true){
             //연산 선택
             System.out.println("원하는 연산을 선택해주세요. (arithmetic, circle)");
             String selection = sc.nextLine();
-
             //사칙연산
             if(selection.equals("arithmetic")){
+                //연산 위한 형변환
+                ArithmeticCalculator arithmeticCalculator = (ArithmeticCalculator)arithCalc;
+
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int firstNum = sc.nextInt();
                 System.out.print("두 번째 숫자를 입력하세요: ");
@@ -27,23 +29,23 @@ public class App {
 
                 switch (operator){
                     case '+':
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'+');
+                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'+');
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '-':
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'-');
+                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'-');
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '*':
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'*');
+                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'*');
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '/':
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,'/');
+                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'/');
                         arithCalc.Setter(arithmeticResult);
                         break;
                     default:
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum,operator);
+                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,operator);
                 }
 
                 System.out.println("결과: " + arithmeticResult);
@@ -77,8 +79,12 @@ public class App {
                 double circleRadius = sc.nextDouble();
                 double circleResult;
 
-                circleResult =circleCalc.calculateCircleArea(circleRadius);
+                //연산위한 형변환
+                CircleCalculator circlecalculator = (CircleCalculator) circleCalc;
 
+                //연산
+                circleResult =circlecalculator.calculateCircleArea(circleRadius);
+                //결과 출력
                 System.out.println("결과: " + circleResult);
 
                 //넓이 저장

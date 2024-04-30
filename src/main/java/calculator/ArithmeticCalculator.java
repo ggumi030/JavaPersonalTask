@@ -7,6 +7,10 @@ public class ArithmeticCalculator extends Calculator {
     //생성자
     public ArithmeticCalculator(){
         super.arrList = new ArrayList<>();
+        super.addoperator = new AddOperator();
+        super.suboperator = new SubtractOperator();
+        super.divideoperator = new DivideOperator();
+        super.multiplyoperator = new MultiplyOperator();
     }
 
     //사칙 연산 계산 메서드
@@ -14,17 +18,14 @@ public class ArithmeticCalculator extends Calculator {
         double result = 0.0;
 
         switch (opterator){
-            case '+' : result = firstNum + secondNum;
-                break;
-            case '-' : result = firstNum - secondNum;
-                break;
-            case '*' : result = firstNum * secondNum;
-                break;
+            case '+' : result = super.addoperator.operate(firstNum, secondNum); break;
+            case '-' : result = super.suboperator.operate(firstNum, secondNum); break;
+            case '*' : result = super.multiplyoperator.operate(firstNum, secondNum); break;
             case '/' :
                 if(secondNum == 0){
                     throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 }else{
-                    result = (double)firstNum / secondNum;
+                    result = super.divideoperator.operate(firstNum, secondNum);
                 }
                 break;
             default:
