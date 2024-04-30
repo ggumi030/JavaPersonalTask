@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) throws ArithmeticException{
         Scanner sc = new Scanner(System.in);
         //사칙연산 클래스 선언
-        ArithmeticCalculator arithCalc;
+        ArithmeticCalculator arithCalc = new ArithmeticCalculator();
         //사칙연산 인터페이스 선언
         Operator add = new AddOperator();
         Operator subtract = new SubtractOperator();
@@ -36,27 +36,27 @@ public class App {
 
                 switch (operator){
                     case '+':
-                        arithCalc = new ArithmeticCalculator(add);
+                        arithCalc.operatorSetter(add);
                         arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '-':
-                        arithCalc = new ArithmeticCalculator(subtract);
+                        arithCalc.operatorSetter(subtract);
                         arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '*':
-                        arithCalc = new ArithmeticCalculator(multiply);
+                        arithCalc.operatorSetter(multiply);
                         arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '/':
-                        arithCalc = new ArithmeticCalculator(divide);
+                        arithCalc.operatorSetter(divide);
                         arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '%':
-                        arithCalc = new ArithmeticCalculator(mod);
+                        arithCalc.operatorSetter(mod);
                         arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
