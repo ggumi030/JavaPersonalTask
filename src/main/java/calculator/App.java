@@ -6,7 +6,16 @@ public class App {
 
     public static void main(String[] args) throws ArithmeticException{
         Scanner sc = new Scanner(System.in);
-        Calculator arithCalc = new ArithmeticCalculator();
+        //사칙연산 클래스 선언
+        ArithmeticCalculator arithCalc;
+        //사칙연산 인터페이스 선언
+        Operator add = new AddOperator();
+        Operator subtract = new SubtractOperator();
+        Operator multiply = new MultiplyOperator();
+        Operator divide = new DivideOperator();
+        Operator mod = new ModOperator();
+
+        //원 넓이 연산 클래스 선언
         Calculator circleCalc = new CircleCalculator();
 
         while(true){
@@ -15,8 +24,6 @@ public class App {
             String selection = sc.nextLine();
             //사칙연산
             if(selection.equals("arithmetic")){
-                //연산 위한 형변환
-                ArithmeticCalculator arithmeticCalculator = (ArithmeticCalculator)arithCalc;
 
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int firstNum = sc.nextInt();
@@ -29,23 +36,32 @@ public class App {
 
                 switch (operator){
                     case '+':
-                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'+');
+                        arithCalc = new ArithmeticCalculator(add);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '-':
-                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'-');
+                        arithCalc = new ArithmeticCalculator(subtract);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '*':
-                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'*');
+                        arithCalc = new ArithmeticCalculator(multiply);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     case '/':
-                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,'/');
+                        arithCalc = new ArithmeticCalculator(divide);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
+                        arithCalc.Setter(arithmeticResult);
+                        break;
+                    case '%':
+                        arithCalc = new ArithmeticCalculator(mod);
+                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
                         arithCalc.Setter(arithmeticResult);
                         break;
                     default:
-                        arithmeticResult = arithmeticCalculator.calculate(firstNum,secondNum,operator);
+                        throw new ArithmeticException("올바른 연산자를 입력해주세요 (사칙연산 연산자 : +, -, *, /, %)");
                 }
 
                 System.out.println("결과: " + arithmeticResult);

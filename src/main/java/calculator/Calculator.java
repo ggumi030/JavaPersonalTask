@@ -19,6 +19,9 @@ public abstract class Calculator {
     protected MultiplyOperator multiplyoperator;
     protected DivideOperator divideoperator;
 
+    //사칙연산 인터페이스
+    protected Operator operator;
+
     //값 저장하기
     public abstract void Setter(double result);
     //값 가져오기

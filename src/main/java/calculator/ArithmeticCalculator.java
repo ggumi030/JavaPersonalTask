@@ -5,33 +5,14 @@ import java.util.ArrayList;
 public class ArithmeticCalculator extends Calculator {
 
     //생성자
-    public ArithmeticCalculator(){
+    public ArithmeticCalculator(Operator operator){
         super.arrList = new ArrayList<>();
-        super.addoperator = new AddOperator();
-        super.suboperator = new SubtractOperator();
-        super.divideoperator = new DivideOperator();
-        super.multiplyoperator = new MultiplyOperator();
+        super.operator = operator;
     }
 
     //사칙 연산 계산 메서드
-    public double calculate(int firstNum, int secondNum, char opterator) throws ArithmeticException{
-        double result = 0.0;
-
-        switch (opterator){
-            case '+' : result = super.addoperator.operate(firstNum, secondNum); break;
-            case '-' : result = super.suboperator.operate(firstNum, secondNum); break;
-            case '*' : result = super.multiplyoperator.operate(firstNum, secondNum); break;
-            case '/' :
-                if(secondNum == 0){
-                    throw new ArithmeticException("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                }else{
-                    result = super.divideoperator.operate(firstNum, secondNum);
-                }
-                break;
-            default:
-                throw new ArithmeticException("올바른 연산자를 입력해주세요 (사칙연산 연산자 : +, -, *, /)");
-        }
-
+    public double calculate(int firstNum, int secondNum) throws ArithmeticException{
+        double result = super.operator.operate(firstNum,secondNum);
         return result;
     }
 
