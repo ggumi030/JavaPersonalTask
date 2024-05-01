@@ -39,4 +39,11 @@ public class ArithmeticCalculator extends Calculator {
         }
         System.out.println("]");
     }
+
+    //입력된 값보다 큰 결과 값 조회
+    public void inquiryBigResults(int inputNum){
+        System.out.print("입력 받은 값보다 더 큰 값은 : [ ");
+        super.arrList.stream().filter(num -> num > inputNum).forEach(num -> System.out.print(num + " "));
+        System.out.println("] 입니다.");
+    }
 }

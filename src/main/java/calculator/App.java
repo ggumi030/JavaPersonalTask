@@ -82,6 +82,13 @@ public class App {
                     arithCalc.inquiryResults();
                 }
 
+                //더 큰 결과 값 출력
+                System.out.println("값을 입력해주세요. (더 큰 결과값 조회)");
+                int inputNum = sc.nextInt();
+                arithCalc.inquiryBigResults(inputNum);
+                sc.nextLine(); //입력된 \n값 제거
+
+
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                 String re = sc.nextLine();
                 if(re.equals("exit")){
