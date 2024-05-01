@@ -2,7 +2,7 @@ package calculator;
 
 import java.util.ArrayList;
 
-public class ArithmeticCalculator extends Calculator {
+public class ArithmeticCalculator<T extends Number> extends Calculator {
 
     //생성자
     public ArithmeticCalculator(){
@@ -10,7 +10,7 @@ public class ArithmeticCalculator extends Calculator {
     }
 
     //사칙 연산 계산 메서드
-    public double calculate(int firstNum, int secondNum) throws ArithmeticException{
+    public double calculate( T firstNum, T secondNum) throws ArithmeticException{
         double result = super.operator.operate(firstNum,secondNum);
         return result;
     }

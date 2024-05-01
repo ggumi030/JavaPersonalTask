@@ -1,7 +1,13 @@
 package calculator;
 
-public class MultiplyOperator implements Operator{
-    public double operate(int firstNum, int secondNum) throws ArithmeticException {
-        return OperatorType.MULTIPLY.apply(firstNum,secondNum);
+public class MultiplyOperator<T extends Number> implements Operator<T>{
+    public double operate(T firstNum, T secondNum) throws ArithmeticException {
+
+        //언박싱
+        double firstnum = (double) firstNum;
+        double secondnum = (double) secondNum;
+
+        return firstnum * secondnum;
+//        return OperatorType.MULTIPLY.apply(firstNum,secondNum);
     }
 }

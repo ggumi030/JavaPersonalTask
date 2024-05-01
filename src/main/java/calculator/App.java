@@ -18,6 +18,7 @@ public class App {
         //원 넓이 연산 클래스 선언
         Calculator circleCalc = new CircleCalculator();
 
+
         while(true){
             //연산 선택
             System.out.println("원하는 연산을 선택해주세요. (arithmetic, circle)");
@@ -26,9 +27,9 @@ public class App {
             if(selection.equals("arithmetic")){
 
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                int firstNum = sc.nextInt();
+                double firstNum = sc.nextDouble();
                 System.out.print("두 번째 숫자를 입력하세요: ");
-                int secondNum = sc.nextInt();
+                double secondNum = sc.nextDouble();
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char operator = sc.next().charAt(0);
 

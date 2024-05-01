@@ -1,5 +1,5 @@
 package calculator;
 
-public interface Operator {
-    public double operate(int firstNum, int secondNum) throws ArithmeticException;
+public interface Operator<T extends Number> {
+    public double operate(T firstNum, T secondNum) throws ArithmeticException;
 }

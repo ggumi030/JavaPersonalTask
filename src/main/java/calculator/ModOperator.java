@@ -1,7 +1,15 @@
 package calculator;
 
-public class ModOperator implements Operator{
-    public double operate(int firstNum, int secondNum) throws ArithmeticException{
-        return OperatorType.REMAINDER.apply(firstNum,secondNum);
+public class ModOperator<T extends Number> implements Operator<T>{
+    public double operate(T firstNum, T secondNum) throws ArithmeticException{
+
+        //언박싱
+        double firstnum = (double) firstNum;
+        double secondnum = (double) secondNum;
+
+        return firstnum % secondnum;
+
+
+//        return OperatorType.REMAINDER.apply(firstNum,secondNum);
     }
 }
