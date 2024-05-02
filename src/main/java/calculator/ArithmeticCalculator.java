@@ -10,21 +10,28 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
     }
 
     //사칙 연산 계산 메서드
-    public double calculate( T firstNum, T secondNum) throws ArithmeticException{
-        double result = super.operator.operate(firstNum,secondNum);
-        return result;
+    public double calculate( T firstNum, T secondNum, char operator) throws ArithmeticException{
+        return operatorSetter(operator).operate(firstNum,secondNum);
     }
 
     //사칙 연산 설정 메서드
-    public void operatorSetter(Operator operator){
-        super.operator = operator;
+    public Operator<T> operatorSetter(char operator){
+        OperatorType operatorType = OperatorType.getOperatorType(operator);
+        return switch(operatorType){
+            case PLUS ->  new AddOperator<>();
+            case MINUS ->  new SubtractOperator<>();
+            case MULTIPLY ->  new MultiplyOperator<>();
+            case DIVIDE ->  new DivideOperator<>();
+            case MODULO ->  new ModOperator<>();
+        };
+
     }
 
-    public void Setter(double result){
+    public void setter(double result){
         super.arrList.add(result);
     }
 
-    public ArrayList<Double> Getter(){
+    public ArrayList<Double> getter(){
         return super.arrList;
     }
 

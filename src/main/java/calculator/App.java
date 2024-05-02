@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -8,13 +9,6 @@ public class App {
         Scanner sc = new Scanner(System.in);
         //사칙연산 클래스 선언
         ArithmeticCalculator arithCalc = new ArithmeticCalculator();
-        //사칙연산 인터페이스 선언
-        Operator add = new AddOperator();
-        Operator subtract = new SubtractOperator();
-        Operator multiply = new MultiplyOperator();
-        Operator divide = new DivideOperator();
-        Operator mod = new ModOperator();
-
         //원 넓이 연산 클래스 선언
         Calculator circleCalc = new CircleCalculator();
 
@@ -35,36 +29,8 @@ public class App {
 
                 double arithmeticResult = 0;
 
-                switch (operator){
-                    case '+':
-                        arithCalc.operatorSetter(add);
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
-                        arithCalc.Setter(arithmeticResult);
-                        break;
-                    case '-':
-                        arithCalc.operatorSetter(subtract);
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
-                        arithCalc.Setter(arithmeticResult);
-                        break;
-                    case '*':
-                        arithCalc.operatorSetter(multiply);
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
-                        arithCalc.Setter(arithmeticResult);
-                        break;
-                    case '/':
-                        arithCalc.operatorSetter(divide);
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
-                        arithCalc.Setter(arithmeticResult);
-                        break;
-                    case '%':
-                        arithCalc.operatorSetter(mod);
-                        arithmeticResult = arithCalc.calculate(firstNum,secondNum);
-                        arithCalc.Setter(arithmeticResult);
-                        break;
-                    default:
-                        throw new ArithmeticException("올바른 연산자를 입력해주세요 (사칙연산 연산자 : +, -, *, /, %)");
-                }
-
+                arithmeticResult = arithCalc.calculate(firstNum,secondNum,operator);
+                arithCalc.setter(arithmeticResult);
                 System.out.println("결과: " + arithmeticResult);
 
                 //값 제거
@@ -112,27 +78,23 @@ public class App {
                 System.out.println("결과: " + circleResult);
 
                 //넓이 저장
-                circleCalc.Setter(circleResult);
+                circleCalc.setter(circleResult);
 
                 //값 제거
                 sc.nextLine(); //입력된 \n값 제거
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-                String remove = sc.nextLine();
-
-                if(remove.equals("remove")){
+                if(Objects.equals("remove",sc.nextLine())){
                     circleCalc.removeResult();
                 }
 
                 //값 조회
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-                String inquiry = sc.nextLine();
-                if(inquiry.equals("inquiry")){
+                if(Objects.equals(sc.nextLine(),"inquiry")){
                     circleCalc.inquiryResults();
                 }
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-                String re = sc.nextLine();
-                if(re.equals("exit")){
+                if(Objects.equals("exit",sc.nextLine())){
                     break;
                 }
             }

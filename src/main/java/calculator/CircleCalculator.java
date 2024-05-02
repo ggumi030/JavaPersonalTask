@@ -15,11 +15,11 @@ public class CircleCalculator extends Calculator{
     }
 
     @Override
-    public ArrayList<Double> Getter(){
+    public ArrayList<Double> getter(){
         return super.circleList;
     }
 
-    public void Setter(double result){
+    public void setter(double result){
         super.circleList.add(result);
     }
 
