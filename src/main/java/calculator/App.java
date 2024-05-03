@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) throws ArithmeticException{
         Scanner sc = new Scanner(System.in);
         //사칙연산 클래스 선언
-        ArithmeticCalculator arithCalc = new ArithmeticCalculator();
+        ArithmeticCalculator<Double> arithCalc = new ArithmeticCalculator<>(Double.class);
         //원 넓이 연산 클래스 선언
         Calculator circleCalc = new CircleCalculator();
 

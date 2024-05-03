@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class ArithmeticCalculator<T extends Number> extends Calculator {
 
+    public final Class<T> type;
     //생성자
-    public ArithmeticCalculator(){
+    public ArithmeticCalculator(Class<T> type){
         super.arrList = new ArrayList<>();
+        this.type = type;
     }
 
     //사칙 연산 계산 메서드
-    public double calculate( T firstNum, T secondNum, char operator) throws ArithmeticException{
+    public T calculate( T firstNum, T secondNum, char operator) throws ArithmeticException{
         return operatorSetter(operator).operate(firstNum,secondNum);
     }
 
@@ -18,11 +20,11 @@ public class ArithmeticCalculator<T extends Number> extends Calculator {
     public Operator<T> operatorSetter(char operator){
         OperatorType operatorType = OperatorType.getOperatorType(operator);
         return switch(operatorType){
-            case PLUS ->  new AddOperator<>();
-            case MINUS ->  new SubtractOperator<>();
-            case MULTIPLY ->  new MultiplyOperator<>();
-            case DIVIDE ->  new DivideOperator<>();
-            case MODULO ->  new ModOperator<>();
+            case PLUS ->  new AddOperator<>(type);
+            case MINUS ->  new SubtractOperator<>(type);
+            case MULTIPLY ->  new MultiplyOperator<>(type);
+            case DIVIDE ->  new DivideOperator<>(type);
+            case MODULO ->  new ModOperator<>(type);
         };
 
     }
