@@ -9,7 +9,7 @@ public class ModOperator<T extends Number> implements Operator<T>{
     }
 
 
-    public T operate(T firstNum, T secondNum) throws ArithmeticException{
+    public T operate(T firstNum, T secondNum) {
 
         //언박싱
         double firstnum = (double) firstNum;

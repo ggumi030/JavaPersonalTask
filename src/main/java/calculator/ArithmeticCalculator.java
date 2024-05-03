@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ArithmeticCalculator<T extends Number> extends Calculator {
 
     public final Class<T> type;
+
     //생성자
     public ArithmeticCalculator(Class<T> type){
         super.arrList = new ArrayList<>();

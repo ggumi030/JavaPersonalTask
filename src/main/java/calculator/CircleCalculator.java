@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CircleCalculator extends Calculator{
     //생성자
     public CircleCalculator(){
-        super.circleList = new ArrayList<>();
+        super.arrList = new ArrayList<>();
     }
 
     //원의 넓이 계산 메서드
@@ -16,20 +16,20 @@ public class CircleCalculator extends Calculator{
 
     @Override
     public ArrayList<Double> getter(){
-        return super.circleList;
+        return super.arrList;
     }
 
     public void setter(double result){
-        super.circleList.add(result);
+        super.arrList.add(result);
     }
 
     public void removeResult(){
-        super.circleList.removeFirst();
+        super.arrList.removeFirst();
     }
 
     public void inquiryResults(){
         System.out.print("[ ");
-        for(Double num : super.circleList){
+        for(Double num : super.arrList){
             System.out.print(num + " ");
         }
         System.out.println("]");

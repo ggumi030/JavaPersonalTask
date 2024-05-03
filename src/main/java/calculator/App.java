@@ -18,7 +18,7 @@ public class App {
             System.out.println("원하는 연산을 선택해주세요. (arithmetic, circle)");
             String selection = sc.nextLine();
             //사칙연산
-            if(selection.equals("arithmetic")){
+            if(Objects.equals(selection,"arithmetic")){
 
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 double firstNum = sc.nextDouble();
@@ -64,7 +64,7 @@ public class App {
             }
 
             //원 넓이 구하기
-            if(selection.equals("circle")){
+            if(Objects.equals(selection,"circle")){
                 System.out.print("반지름의 길이를 입력하세요: ");
                 double circleRadius = sc.nextDouble();
                 double circleResult;

@@ -8,7 +8,7 @@ public class SubtractOperator<T extends Number> implements Operator<T>{
         this.type = type;
     }
 
-    public T operate(T firstNum, T secondNum) throws ArithmeticException {
+    public T operate(T firstNum, T secondNum) {
 
         //언박싱
         double firstnum = (double) firstNum;

@@ -8,13 +8,9 @@ public class MultiplyOperator<T extends Number> implements Operator<T>{
         this.type = type;
     }
 
-    public T operate(T firstNum, T secondNum) throws ArithmeticException {
-
+    public T operate(T firstNum, T secondNum) {
         //언박싱
-        double firstnum = (double) firstNum;
-        double secondnum = (double) secondNum;
-
-        Number result = firstnum * secondnum;
+        Number result = (double) firstNum * (double) secondNum;
         return NumberConversionUtils.convertNumberType(result,type);
 //        return OperatorType.MULTIPLY.apply(firstNum,secondNum);
     }
